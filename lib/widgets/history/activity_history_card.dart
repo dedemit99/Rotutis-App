@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../utils/app_text_style.dart';
 
 class ActivityHistoryCard extends StatelessWidget {
   final String title;
@@ -47,18 +48,11 @@ class ActivityHistoryCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
 
               children: [
-                Text(
-                  title,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
+                Text(title, style: AppTextStyle.bodyLarge),
 
                 const SizedBox(height: 6),
 
-                Text(date, style: TextStyle(color: Colors.grey, fontSize: 13)),
+                Text(date, style: AppTextStyle.bodyLarge),
 
                 const SizedBox(height: 12),
 
@@ -72,7 +66,7 @@ class ActivityHistoryCard extends StatelessWidget {
 
                     const SizedBox(width: 4),
 
-                    Text(calories, style: TextStyle(color: Colors.white)),
+                    Text(calories, style: AppTextStyle.bodyLarge),
 
                     const SizedBox(width: 20),
 
@@ -80,7 +74,7 @@ class ActivityHistoryCard extends StatelessWidget {
 
                     const SizedBox(width: 4),
 
-                    Text(duration, style: TextStyle(color: Colors.white)),
+                    Text(duration, style: AppTextStyle.bodyLarge),
                   ],
                 ),
               ],

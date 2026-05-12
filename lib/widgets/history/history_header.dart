@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../utils/app_text_style.dart';
 
 class HistoryHeader extends StatelessWidget {
   const HistoryHeader({super.key});
@@ -11,14 +12,7 @@ class HistoryHeader extends StatelessWidget {
       children: [
         Icon(Icons.arrow_back, color: Colors.white),
 
-        Text(
-          'History',
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
+        Text('History', style: AppTextStyle.heading3),
 
         Icon(Icons.more_vert, color: Colors.white),
       ],

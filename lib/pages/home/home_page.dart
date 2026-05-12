@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../widgets/program_card.dart';
+import '../../utils/app_text_style.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -15,20 +16,13 @@ class HomePage extends StatelessWidget {
           children: [
             // ===== GREETING =====
             const SizedBox(height: 20),
-            const Text(
-              'Hello Rizki',
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-              ),
-            ),
+            const Text('Hello Rizki', style: AppTextStyle.heading3),
 
             const SizedBox(height: 10),
 
             const Text(
               'Ready for your run today?',
-              style: TextStyle(fontSize: 20, color: Colors.white70),
+              style: AppTextStyle.heading3,
             ),
             // ===== GREETING =====
 
@@ -49,52 +43,31 @@ class HomePage extends StatelessWidget {
                 children: [
                   Column(
                     children: const [
-                      Text(
-                        '15,5',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
+                      Text('15,5', style: AppTextStyle.heading2),
 
                       const SizedBox(height: 5),
 
-                      Text('KM', style: TextStyle(color: Colors.white70)),
+                      Text('KM', style: AppTextStyle.heading3),
                     ],
                   ),
 
                   Column(
                     children: const [
-                      Text(
-                        '52',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
+                      Text('52', style: AppTextStyle.heading2),
 
                       const SizedBox(height: 5),
 
-                      Text('MIN', style: TextStyle(color: Colors.white70)),
+                      Text('MIN', style: AppTextStyle.heading3),
                     ],
                   ),
 
                   Column(
                     children: const [
-                      Text(
-                        '820',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
+                      Text('820', style: AppTextStyle.heading2),
 
                       const SizedBox(height: 5),
 
-                      Text('CAL', style: TextStyle(color: Colors.white70)),
+                      Text('CAL', style: AppTextStyle.heading3),
                     ],
                   ),
                 ],
@@ -105,14 +78,7 @@ class HomePage extends StatelessWidget {
             // ===== TODAY ACTIVITY =====
             const SizedBox(height: 30),
 
-            const Text(
-              'Today Activity',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 22,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
+            const Text('Today Activity', style: AppTextStyle.heading2),
 
             const SizedBox(height: 20),
             Container(

@@ -1,25 +1,46 @@
 import 'package:flutter/material.dart';
 
 class DateSelector extends StatelessWidget {
-  const DateSelector({super.key});
+  final int selectedIndex;
+  final Function(int) onTap;
+  final List<Map<String, dynamic>> dates;
+
+  const DateSelector({
+    super.key,
+    required this.selectedIndex,
+    required this.onTap,
+    required this.dates,
+  });
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: 80,
 
-      child: ListView(
+      // Dynamic horizontal lists
+      child: ListView.builder(
         scrollDirection: Axis.horizontal,
+        itemCount: dates.length,
 
-        children: const [
-          DateItem(day: '19', label: 'Mon', isSelected: false),
-          DateItem(day: '20', label: 'Tue', isSelected: false),
-          DateItem(day: '21', label: 'Wed', isSelected: true),
-          DateItem(day: '22', label: 'Thu', isSelected: false),
-          DateItem(day: '23', label: 'Fri', isSelected: false),
-          DateItem(day: '24', label: 'Sat', isSelected: false),
-          DateItem(day: '25', label: 'San', isSelected: false),
-        ],
+        // Create Item
+        itemBuilder: (context, index) {
+          // current date data
+          final date = dates[index];
+
+          // Gesture
+          return GestureDetector(
+            onTap: () {
+              onTap(index);
+            },
+
+            // Date Card
+            child: DateItem(
+              day: date['day']!,
+              label: date['label']!,
+              isSelected: selectedIndex == index,
+            ),
+          );
+        },
       ),
     );
   }

@@ -3,31 +3,32 @@ import '../../widgets/history/history_header.dart';
 import '../../widgets/history/summary_card.dart';
 import '../../widgets/history/activity_history_card.dart';
 import '../../widgets/history/date_selector.dart';
+import '../../models/activity_model.dart';
 
-final List<Map<String, String>> activities = [
-  {
-    'title': 'Running 6.2 km',
-    'date': 'Today, 08:20 AM',
-    'calories': '275 kcal',
-    'duration': '1h 42m',
-    'day': 'wed',
-  },
+final List<ActivityModel> activities = [
+  ActivityModel(
+    title: 'Running 6.2 km',
+    date: 'Today, 08:20 AM',
+    calories: '275 kcal',
+    duration: '1h 42m',
+    day: 'Wed',
+  ),
 
-  {
-    'title': 'Hiking 8,2 km',
-    'date': 'Yesterday',
-    'calories': '320 kcal',
-    'duration': '2h 10m',
-    'day': 'Tue',
-  },
+  ActivityModel(
+    title: 'Hiking 8,2 km',
+    date: 'Yesterday',
+    calories: '320 kcal',
+    duration: '2h 10m',
+    day: 'Tue',
+  ),
 
-  {
-    'title': 'Sprint Training 100 m',
-    'date': 'Monday',
-    'calories': '180 kcal',
-    'duration': '45m',
-    'day': 'Mon',
-  },
+  ActivityModel(
+    title: 'Sprint Training 100 m',
+    date: 'Monday',
+    calories: '180 kcal',
+    duration: '45m',
+    day: 'Mon',
+  ),
 ];
 
 class HistoryPage extends StatefulWidget {
@@ -50,11 +51,12 @@ class _HistoryPageState extends State<HistoryPage> {
     {'day': '25', 'label': 'San'},
   ];
 
-  List<Map<String, dynamic>> get filteredActivities {
+  // Filter activities
+  List<ActivityModel> get filteredActivities {
     final selectedDay = dates[selectedDateIndex]['label'];
 
     return activities.where((activity) {
-      return activity['day'] == selectedDay;
+      return activity.day == selectedDay;
     }).toList();
   }
 
@@ -77,7 +79,17 @@ class _HistoryPageState extends State<HistoryPage> {
 
               // ===== DATE SELECTOR =====
               SizedBox(height: 20),
-              const DateSelector(),
+              DateSelector(
+                dates: dates,
+
+                selectedIndex: selectedDateIndex,
+
+                onTap: (index) {
+                  setState(() {
+                    selectedDateIndex = index;
+                  });
+                },
+              ),
 
               // ===== SUMMARY CARD =====
               SizedBox(height: 20),
@@ -87,12 +99,12 @@ class _HistoryPageState extends State<HistoryPage> {
               const SizedBox(height: 30),
               Expanded(
                 child: ListView(
-                  children: activities.map((activity) {
+                  children: filteredActivities.map((activity) {
                     return ActivityHistoryCard(
-                      title: activity['title']!,
-                      date: activity['date']!,
-                      calories: activity['calories']!,
-                      duration: activity['duration']!,
+                      title: activity.title,
+                      date: activity.date,
+                      calories: activity.calories,
+                      duration: activity.duration,
                     );
                   }).toList(),
                 ),

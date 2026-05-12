@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:rotutis_app/utils/app_colors.dart';
 import 'pages/home/home_page.dart';
 import 'pages/history/history_page.dart';
 import 'pages/profile/profile_page.dart';
+import 'utils/app_theme.dart';
 
 void main() {
   runApp(const RotutisApp());
@@ -27,9 +29,10 @@ class _RotutisAppState extends State<RotutisApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      theme: AppTheme.darkTheme,
       title: 'Rotutis App',
       home: Scaffold(
-        backgroundColor: const Color.fromARGB(255, 23, 21, 21),
+        backgroundColor: AppColors.background,
         // appBar: AppBar(title: const Text('Rotutis App')),
         body: pages[selectedIndex],
         // MainNavigationPage()
@@ -41,10 +44,10 @@ class _RotutisAppState extends State<RotutisApp> {
               selectedIndex = index;
             });
           },
-          backgroundColor: Colors.black,
+          backgroundColor: AppColors.background,
 
-          selectedItemColor: Colors.orange,
-          unselectedItemColor: Colors.white54,
+          selectedItemColor: AppColors.orange,
+          unselectedItemColor: AppColors.lightGrey,
 
           items: const [
             BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
