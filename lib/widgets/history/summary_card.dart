@@ -70,11 +70,15 @@ Widget _buildInfo({required String title, required String value}) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
-      Text(title, style: const TextStyle(fontSize: 12, color: Colors.grey)),
+      Text(title, style: const TextStyle(fontSize: 12, color: Colors.black)),
       const SizedBox(height: 4),
       Text(
         value,
-        style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+        style: const TextStyle(
+          fontSize: 14,
+          color: Colors.black,
+          fontWeight: FontWeight.bold,
+        ),
       ),
     ],
   );
