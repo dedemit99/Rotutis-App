@@ -10,7 +10,12 @@ class HistoryHeader extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
       children: [
-        Icon(Icons.arrow_back, color: Colors.white),
+        IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: Icon(Icons.arrow_back, color: Colors.white),
+        ),
 
         Text('History', style: AppTextStyle.heading3),
 

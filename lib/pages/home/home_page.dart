@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rotutis_app/pages/workout/workout_detail_page.dart';
 import '../../widgets/program_card.dart';
 import '../../utils/app_text_style.dart';
 
@@ -200,9 +201,42 @@ class HomePage extends StatelessWidget {
 
             const SizedBox(height: 20),
 
-            const ProgramCard(title: 'Running', subtitle: '7 km / 49 min'),
-            const ProgramCard(title: 'Push Up', subtitle: '40 km / 20 min'),
-            const ProgramCard(title: 'Cycling', subtitle: '12 km / 1 hour '),
+            ProgramCard(
+              title: 'Running',
+              subtitle: '7 km / 49 min',
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => const WorkoutDetailPage(title: 'Running'),
+                  ),
+                );
+              },
+            ),
+            ProgramCard(
+              title: 'Push Up',
+              subtitle: '40 km / 20 min',
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => const WorkoutDetailPage(title: 'Push Up'),
+                  ),
+                );
+              },
+            ),
+            ProgramCard(
+              title: 'Cycling',
+              subtitle: '12 km / 1 hour ',
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => const WorkoutDetailPage(title: 'Cycling'),
+                  ),
+                );
+              },
+            ),
           ],
         ),
       ),
