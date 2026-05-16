@@ -5,6 +5,7 @@ import '../../widgets/history/activity_history_card.dart';
 import '../../widgets/history/date_selector.dart';
 import '../../models/activity_model.dart';
 import '../../data/dummy/activity_dummy_data.dart';
+import 'package:intl/intl.dart';
 
 class HistoryPage extends StatefulWidget {
   const HistoryPage({super.key});
@@ -16,17 +17,21 @@ class HistoryPage extends StatefulWidget {
 class _HistoryPageState extends State<HistoryPage> {
   int selectedDateIndex = 0;
 
-  final List<Map<String, String>> dates = [
-    {'day': '19', 'label': 'Mon'},
-    {'day': '20', 'label': 'Tue'},
-    {'day': '21', 'label': 'Wed'},
-    {'day': '22', 'label': 'Thu'},
-    {'day': '23', 'label': 'Fri'},
-    {'day': '24', 'label': 'Sat'},
-    {'day': '25', 'label': 'San'},
-  ];
+  List<Map<String, String>> get dates {
+    return List.generate(30, (index) {
+      final date = DateTime.now().subtract(Duration(days: 3 - index));
 
-  // Filter activities
+      return {
+        //* Date
+        'day': DateFormat('dd').format(date),
+
+        //* Day
+        'label': DateFormat('EEE').format(date),
+      };
+    });
+  }
+
+  //* Filter activities
   List<ActivityModel> get filteredActivities {
     final selectedDay = dates[selectedDateIndex]['label'];
 
@@ -48,11 +53,11 @@ class _HistoryPageState extends State<HistoryPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
 
             children: [
-              // ===== HEADER =====
+              //* ===== HEADER =====
               SizedBox(height: 20),
               const HistoryHeader(),
 
-              // ===== DATE SELECTOR =====
+              //* ===== DATE SELECTOR =====
               SizedBox(height: 20),
               DateSelector(
                 dates: dates,
@@ -66,11 +71,11 @@ class _HistoryPageState extends State<HistoryPage> {
                 },
               ),
 
-              // ===== SUMMARY CARD =====
+              //* ===== SUMMARY CARD =====
               SizedBox(height: 20),
               const SummaryCard(),
 
-              // ===== ACTIVITY LIST =====
+              //* ===== ACTIVITY LIST =====
               const SizedBox(height: 30),
               Expanded(
                 child: ListView(
