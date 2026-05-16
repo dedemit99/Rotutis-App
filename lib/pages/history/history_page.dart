@@ -26,7 +26,7 @@ class _HistoryPageState extends State<HistoryPage> {
     {'day': '25', 'label': 'San'},
   ];
 
-  // Filter activities
+  //* Filter activities
   List<ActivityModel> get filteredActivities {
     final selectedDay = dates[selectedDateIndex]['label'];
 
@@ -48,11 +48,11 @@ class _HistoryPageState extends State<HistoryPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
 
             children: [
-              // ===== HEADER =====
+              //* ===== HEADER =====
               SizedBox(height: 20),
               const HistoryHeader(),
 
-              // ===== DATE SELECTOR =====
+              //* ===== DATE SELECTOR =====
               SizedBox(height: 20),
               DateSelector(
                 dates: dates,
@@ -66,11 +66,11 @@ class _HistoryPageState extends State<HistoryPage> {
                 },
               ),
 
-              // ===== SUMMARY CARD =====
+              //* ===== SUMMARY CARD =====
               SizedBox(height: 20),
               const SummaryCard(),
 
-              // ===== ACTIVITY LIST =====
+              //* ===== ACTIVITY LIST =====
               const SizedBox(height: 30),
               Expanded(
                 child: ListView(

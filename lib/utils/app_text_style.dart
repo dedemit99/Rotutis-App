@@ -37,7 +37,7 @@ class AppTextStyle {
   static const bodySmall = TextStyle(fontSize: 12, color: AppColors.lightGrey);
 
   // LABELS
-  static const labe = TextStyle(
+  static const label = TextStyle(
     fontSize: 15,
     fontWeight: FontWeight.w500,
     color: AppColors.lightGrey,

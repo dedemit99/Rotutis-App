@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:rotutis_app/utils/app_colors.dart';
 import 'package:rotutis_app/utils/app_text_style.dart';
+import 'workout_recap_page.dart';
 
 class WorkoutSessionPage extends StatefulWidget {
   final String title;
@@ -111,7 +112,15 @@ class _WorkoutSessionPageState extends State<WorkoutSessionPage> {
 
                   ElevatedButton(
                     onPressed: () {
-                      Navigator.pop(context);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => WorkoutRecapPage(
+                            title: widget.title,
+                            duration: formatTime(),
+                          ),
+                        ),
+                      );
                     },
                     child: const Text('Finish'),
                   ),
