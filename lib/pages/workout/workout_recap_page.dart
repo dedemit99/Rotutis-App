@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:rotutis_app/pages/workout/workout_detail_page.dart';
 import 'package:rotutis_app/utils/app_colors.dart';
 import 'package:rotutis_app/utils/app_text_style.dart';
+import '../../data/dummy/activity_dummy_data.dart';
+import '../../models/activity_model.dart';
+import 'package:intl/intl.dart';
+import '../navigation/main_navigation_page.dart';
 
 class WorkoutRecapPage extends StatelessWidget {
   final String title;
@@ -74,7 +77,30 @@ class WorkoutRecapPage extends StatelessWidget {
 
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.popUntil(context, (route) => route.isFirst);
+                    final now = DateTime.now();
+
+                    final formattedDate = DateFormat(
+                      'dd MMM yyyy, hh:mm a',
+                    ).format(now);
+
+                    final dayName = DateFormat('EEE').format(now);
+
+                    activities.add(
+                      ActivityModel(
+                        title: title,
+                        date: formattedDate,
+                        calories: '320 kcal',
+                        duration: duration,
+                        day: dayName,
+                      ),
+                    );
+                    Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => const MainNavigationPage(),
+                      ),
+                      (route) => false,
+                    );
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.orange,
